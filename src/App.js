@@ -1,25 +1,39 @@
-import logo from './logo.svg';
+import React, { Component } from 'react'
 import './App.css';
+import DivOne from './DivOne';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export default class App extends Component {
+  state = {
+    tardis: {
+      name: 'Time and Relative Dimension in Space',
+      caps: false,
+    }
+  }
+  
+  changeIt = (text) =>{
+    if (this.state.tardis.caps) {
+      this.setState({
+        tardis: {
+          name: text.toLowerCase(),
+          caps: false
+        }
+      })
+    } else {
+      this.setState({
+        tardis: {
+          name: text.toUpperCase(),
+          caps: true
+        }
+      })
+    }
+  }
+
+  render() {
+    return (
+      <div>
+        <DivOne DivOne={this.state.tardis.name} />
+        
+      </div>
+    )
+  }
 }
-
-export default App;
